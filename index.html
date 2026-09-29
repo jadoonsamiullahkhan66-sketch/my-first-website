@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVA — Creative Digital Experience</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Particle Canvas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Cursor Glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Noise Texture Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-brand">
+            <span class="brand-icon">◆</span>
+            <span class="brand-text">NOVA</span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#hero" class="nav-link active">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#features" class="nav-link">Features</a></li>
+            <li><a href="#gallery" class="nav-link">Gallery</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="nav-controls">
+            <button class="voice-btn" id="voiceBtn" title="Voice Assistant — Click to speak">
+                <span class="voice-waveform">
+                    <span></span><span></span><span></span><span></span><span></span>
+                </span>
+                <span class="voice-text">Voice</span>
+            </button>
+            <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                <span class="theme-icon">🌙</span>
+            </button>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Voice Assistant Panel -->
+    <div class="voice-panel" id="voicePanel">
+        <div class="voice-panel-header">
+            <h3>🎙️ Voice Assistant</h3>
+            <button class="voice-close" id="voiceClose">&times;</button>
+        </div>
+        <div class="voice-messages" id="voiceMessages">
+            <div class="voice-msg bot">Hi! I'm NOVA's voice assistant. Try saying "scroll to features" or "change theme".</div>
+        </div>
+        <div class="voice-status" id="voiceStatus">
+            <span class="pulse-dot"></span>
+            <span id="voiceStatusText">Tap to speak</span>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="aurora"></div>
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+            <div class="gradient-orb orb-4"></div>
+            <div class="gradient-orb orb-5"></div>
+            <div class="grid-overlay"></div>
+            <div class="stars" id="starsContainer"></div>
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">✦ Welcome to the Future</div>
+            <h1 class="hero-title">
+                <span class="title-line">Experience</span>
+                <span class="title-line gradient-text">The Extraordinary</span>
+            </h1>
+            <p class="hero-subtitle">A immersive digital experience with voice control, stunning visuals, and cutting-edge interactions that redefine what a website can be.</p>
+            <div class="hero-cta">
+                <a href="#features" class="btn btn-primary">
+                    <span>Explore Features</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <button class="btn btn-secondary" id="heroVoiceBtn">
+                    <span>🎙️ Try Voice</span>
+                </button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" data-count="6">0</span>
+                    <span class="stat-label">Unique Features</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-count="60">0</span>
+                    <span class="stat-label">FPS Animation</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-count="100">0</span>
+                    <span class="stat-label">% Interactive</span>
+                </div>
+            </div>
+        </div>
+        <div class="elegant-figures">
+            <div class="elegant-figure figure-1">
+                <svg viewBox="0 0 60 160" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="30" cy="20" rx="12" ry="14"/>
+                    <path d="M30 34 L30 90" stroke="currentColor" stroke-width="3" fill="none"/>
+                    <path d="M30 45 L10 70" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                    <path d="M30 45 L50 60" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                    <path d="M30 90 L18 140" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                    <path d="M30 90 L42 140" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                    <circle cx="30" cy="20" r="4" fill="currentColor"/>
+                </svg>
+            </div>
+            <div class="elegant-figure figure-2">
+                <svg viewBox="0 0 60 160" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="30" cy="18" rx="10" ry="12"/>
+                    <path d="M30 30 L30 85" stroke="currentColor" stroke-width="3" fill="none"/>
+                    <path d="M30 40 L12 55" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                    <path d="M30 40 L48 50" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                    <path d="M30 85 L20 135" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                    <path d="M30 85 L40 135" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                    <path d="M22 10 Q30 5 38 10" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            <div class="elegant-figure figure-3">
+                <svg viewBox="0 0 60 160" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="30" cy="22" rx="11" ry="13"/>
+                    <path d="M30 35 L30 88" stroke="currentColor" stroke-width="3" fill="none"/>
+                    <path d="M30 48 L14 65" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                    <path d="M30 48 L46 58" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                    <path d="M30 88 L19 138" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                    <path d="M30 88 L41 138" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                    <path d="M25 8 Q30 3 35 8" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            <div class="elegant-figure figure-4">
+                <svg viewBox="0 0 60 160" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="30" cy="20" rx="12" ry="14"/>
+                    <path d="M30 34 L30 92" stroke="currentColor" stroke-width="3" fill="none"/>
+                    <path d="M30 46 L12 68" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                    <path d="M30 46 L48 62" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                    <path d="M30 92 L17 142" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                    <path d="M30 92 L43 142" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                    <circle cx="30" cy="20" r="3" fill="currentColor"/>
+                </svg>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">About</span>
+                <h2 class="section-title">Redefining <span class="gradient-text">Digital</span> Boundaries</h2>
+                <p class="section-desc">This isn't just a website — it's an experience. Built with modern web technologies, voice AI, and stunning visuals.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card glass-card">
+                    <div class="card-icon">🎨</div>
+                    <h3>Immersive Design</h3>
+                    <p>Beautiful gradients, particle effects, and glassmorphism create a visual experience that captivates every visitor.</p>
+                </div>
+                <div class="about-card glass-card">
+                    <div class="card-icon">🎙️</div>
+                    <h3>Voice Powered</h3>
+                    <p>Navigate, control, and interact using just your voice. The future of human-computer interaction is here.</p>
+                </div>
+                <div class="about-card glass-card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Blazing Fast</h3>
+                    <p>Optimized animations at 60fps, lazy loading, and efficient rendering ensure a buttery smooth experience.</p>
+                </div>
+                <div class="about-card glass-card">
+                    <div class="card-icon">🌗</div>
+                    <h3>Adaptive Theme</h3>
+                    <p>Seamlessly switch between dark and light modes. Your eyes will thank you either way.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Features</span>
+                <h2 class="section-title">What Makes This <span class="gradient-text">Unique</span></h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card glass-card" data-tilt>
+                    <div class="feature-visual">
+                        <div class="feature-animation">
+                            <div class="orbit orbit-1"></div>
+                            <div class="orbit orbit-2"></div>
+                            <div class="orbit-center"></div>
+                        </div>
+                    </div>
+                    <h3>Particle Universe</h3>
+                    <p>Dynamic particle system that responds to your mouse movement, creating a living, breathing background.</p>
+                </div>
+                <div class="feature-card glass-card" data-tilt>
+                    <div class="feature-visual">
+                        <div class="feature-animation">
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                        </div>
+                    </div>
+                    <h3>Voice AI</h3>
+                    <p>Full voice control with natural language processing. Say commands and watch the site respond instantly.</p>
+                </div>
+                <div class="feature-card glass-card" data-tilt>
+                    <div class="feature-visual">
+                        <div class="feature-animation">
+                            <div class="color-wheel"></div>
+                        </div>
+                    </div>
+                    <h3>Smart Themes</h3>
+                    <p>One-click theme switching with smooth transitions. Dark mode for night owls, light mode for day dreamers.</p>
+                </div>
+                <div class="feature-card glass-card" data-tilt>
+                    <div class="feature-visual">
+                        <div class="feature-animation">
+                            <div class="cursor-demo">
+                                <div class="cursor-ring"></div>
+                                <div class="cursor-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Cursor Magic</h3>
+                    <p>A custom cursor glow that follows your mouse, creating a magical trail of light as you navigate.</p>
+                </div>
+                <div class="feature-card glass-card" data-tilt>
+                    <div class="feature-visual">
+                        <div class="feature-animation">
+                            <div class="tilt-demo">
+                                <div class="tilt-inner"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>3D Tilt Cards</h3>
+                    <p>Cards that respond to your mouse with realistic 3D perspective shifts, adding depth to every interaction.</p>
+                </div>
+                <div class="feature-card glass-card" data-tilt>
+                    <div class="feature-visual">
+                        <div class="feature-animation">
+                            <div class="scroll-demo">
+                                <div class="scroll-line"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Smooth Scroll</h3>
+                    <p>Buttery smooth scroll-triggered animations that reveal content as you explore each section.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section gallery" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Gallery</span>
+                <h2 class="section-title">Visual <span class="gradient-text">Scenarios</span></h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item glass-card" data-tilt>
+                    <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=600&q=80'); background-size: cover; background-position: center;">
+                        <div class="gallery-overlay">
+                            <h4>Cosmic Nebula</h4>
+                            <p>Deep space visualization</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item glass-card" data-tilt>
+                    <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80'); background-size: cover; background-position: center;">
+                        <div class="gallery-overlay">
+                            <h4>Ocean Depths</h4>
+                            <p>Underwater exploration</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item glass-card" data-tilt>
+                    <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=600&q=80'); background-size: cover; background-position: center;">
+                        <div class="gallery-overlay">
+                            <h4>Arctic Aurora</h4>
+                            <p>Northern lights display</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item glass-card" data-tilt>
+                    <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=80'); background-size: cover; background-position: center;">
+                        <div class="gallery-overlay">
+                            <h4>Emerald Forest</h4>
+                            <p>Enchanted woodland</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item glass-card" data-tilt>
+                    <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=600&q=80'); background-size: cover; background-position: center;">
+                        <div class="gallery-overlay">
+                            <h4>Twilight Desert</h4>
+                            <p>Sahara at dusk</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item glass-card" data-tilt>
+                    <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80'); background-size: cover; background-position: center;">
+                        <div class="gallery-overlay">
+                            <h4>Midnight City</h4>
+                            <p>Urban nightscape</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Demos Section -->
+    <section class="section demos" id="demos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Try It Live</span>
+                <h2 class="section-title">Click & <span class="gradient-text">It Works</span></h2>
+                <p class="section-desc">Every button below is fully functional. Click, toggle, and play — no placeholders here.</p>
+            </div>
+            <div class="demos-grid">
+                <!-- Theme Mixer -->
+                <div class="demo-card glass-card" data-tilt>
+                    <h3>🎨 Theme Mixer</h3>
+                    <p>Click a color to change the site's accent</p>
+                    <div class="color-swatches">
+                        <button class="swatch" data-color="purple" style="background: linear-gradient(135deg, #6c5ce7, #a29bfe);" title="Purple"></button>
+                        <button class="swatch" data-color="pink" style="background: linear-gradient(135deg, #fd79a8, #fdcb6e);" title="Pink"></button>
+                        <button class="swatch" data-color="teal" style="background: linear-gradient(135deg, #00cec9, #6c5ce7);" title="Teal"></button>
+                        <button class="swatch" data-color="green" style="background: linear-gradient(135deg, #11998e, #38ef7d);" title="Green"></button>
+                        <button class="swatch" data-color="orange" style="background: linear-gradient(135deg, #f093fb, #f5576c);" title="Orange"></button>
+                        <button class="swatch" data-color="blue" style="background: linear-gradient(135deg, #4facfe, #00f2fe);" title="Blue"></button>
+                    </div>
+                    <div class="demo-result" id="themeResult">Current: Purple</div>
+                </div>
+
+                <!-- Click Counter -->
+                <div class="demo-card glass-card" data-tilt>
+                    <h3>👆 Click Counter</h3>
+                    <p>Click the button and watch the count</p>
+                    <div class="counter-display" id="clickCounter">0</div>
+                    <button class="btn btn-primary" id="counterBtn" style="width:100%;justify-content:center;">
+                        <span>Click Me!</span>
+                    </button>
+                    <button class="btn btn-secondary" id="counterReset" style="width:100%;justify-content:center;margin-top:8px;">
+                        <span>Reset</span>
+                    </button>
+                </div>
+
+                <!-- Copy Email -->
+                <div class="demo-card glass-card" data-tilt>
+                    <h3>📋 Copy Email</h3>
+                    <p>Click to copy the email address</p>
+                    <div class="copy-box" id="copyBox">
+                        <span class="copy-text" id="copyText">hello@nova-experience.com</span>
+                        <button class="copy-btn" id="copyBtn">📋 Copy</button>
+                    </div>
+                    <div class="demo-result" id="copyResult">Click copy to test</div>
+                </div>
+
+                <!-- Mood Selector -->
+                <div class="demo-card glass-card" data-tilt>
+                    <h3>🌈 Mood Selector</h3>
+                    <p>Pick a mood and the site adapts</p>
+                    <div class="mood-buttons">
+                        <button class="mood-btn" data-mood="energetic">⚡ Energetic</button>
+                        <button class="mood-btn" data-mood="calm">🌊 Calm</button>
+                        <button class="mood-btn" data-mood="focused">🎯 Focused</button>
+                        <button class="mood-btn" data-mood="creative">🎨 Creative</button>
+                    </div>
+                    <div class="demo-result" id="moodResult">Select a mood</div>
+                </div>
+
+                <!-- Toggle Switches -->
+                <div class="demo-card glass-card" data-tilt>
+                    <h3>🔘 Quick Toggles</h3>
+                    <p>Toggle features on/off instantly</p>
+                    <div class="toggle-list">
+                        <div class="toggle-item">
+                            <span>Particles</span>
+                            <label class="switch">
+                                <input type="checkbox" id="toggleParticles" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-item">
+                            <span>Cursor Glow</span>
+                            <label class="switch">
+                                <input type="checkbox" id="toggleGlow" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-item">
+                            <span>Stars</span>
+                            <label class="switch">
+                                <input type="checkbox" id="toggleStars" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-item">
+                            <span>Sound FX</span>
+                            <label class="switch">
+                                <input type="checkbox" id="toggleSound">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mini Typing Test -->
+                <div class="demo-card glass-card" data-tilt>
+                    <h3>⌨️ Typing Speed</h3>
+                    <p>Type the sentence as fast as you can</p>
+                    <div class="typing-prompt" id="typingPrompt">The quick brown fox jumps</div>
+                    <input type="text" class="typing-input" id="typingInput" placeholder="Start typing here..." autocomplete="off">
+                    <div class="typing-stats" id="typingStats">
+                        <span>WPM: <strong id="wpmDisplay">0</strong></span>
+                        <span>Accuracy: <strong id="accuracyDisplay">100%</strong></span>
+                    </div>
+                </div>
+
+                <!-- Random Quote -->
+                <div class="demo-card glass-card" data-tilt>
+                    <h3>💬 Random Quote</h3>
+                    <p>Click for inspiration</p>
+                    <div class="quote-display" id="quoteDisplay">
+                        <p class="quote-text" id="quoteText">"Click the button for wisdom"</p>
+                        <p class="quote-author" id="quoteAuthor">— NOVA</p>
+                    </div>
+                    <button class="btn btn-primary" id="quoteBtn" style="width:100%;justify-content:center;">
+                        <span>New Quote</span>
+                    </button>
+                </div>
+
+                <!-- Random Background -->
+                <div class="demo-card glass-card" data-tilt>
+                    <h3>🎲 Random Background</h3>
+                    <p>Generate a random color scheme</p>
+                    <div class="bg-preview" id="bgPreview">
+                        <div class="bg-preview-gradient" id="bgPreviewGradient"></div>
+                    </div>
+                    <button class="btn btn-primary" id="randomBgBtn" style="width:100%;justify-content:center;">
+                        <span>Generate Random Theme</span>
+                    </button>
+                    <div class="demo-result" id="bgResult">Click to generate</div>
+                </div>
+
+                <!-- Share & Download -->
+                <div class="demo-card glass-card" data-tilt>
+                    <h3>📤 Share & Download</h3>
+                    <p>Share the site or download the theme</p>
+                    <div class="share-download-btns">
+                        <button class="btn btn-primary" id="shareBtn" style="flex:1;justify-content:center;">
+                            <span>📤 Share</span>
+                        </button>
+                        <button class="btn btn-secondary" id="downloadThemeBtn" style="flex:1;justify-content:center;">
+                            <span>📥 Theme</span>
+                        </button>
+                    </div>
+                    <div class="demo-result" id="shareResult">Share or download the current theme</div>
+                </div>
+
+                <!-- Keyboard Shortcuts -->
+                <div class="demo-card glass-card" data-tilt>
+                    <h3>⌨️ Keyboard Shortcuts</h3>
+                    <p>Try these keyboard shortcuts</p>
+                    <div class="shortcuts-list">
+                        <div class="shortcut-item">
+                            <kbd>D</kbd>
+                            <span>Toggle Dark/Light</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <kbd>V</kbd>
+                            <span>Open Voice Panel</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <kbd>1</kbd>
+                            <span>Go to Home</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <kbd>2</kbd>
+                            <span>Go to About</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <kbd>3</kbd>
+                            <span>Go to Features</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <kbd>4</kbd>
+                            <span>Go to Gallery</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <kbd>5</kbd>
+                            <span>Go to Demos</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <kbd>6</kbd>
+                            <span>Go to Contact</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <kbd>↑↑↓↓←→←→BA</kbd>
+                            <span>Secret Code!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Contact</span>
+                <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
+            </div>
+            <div class="contact-wrapper">
+                <form class="contact-form glass-card" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder=" " required>
+                        <label for="name">Your Name</label>
+                        <div class="input-glow"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder=" " required>
+                        <label for="email">Email Address</label>
+                        <div class="input-glow"></div>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="4" placeholder=" " required></textarea>
+                        <label for="message">Your Message</label>
+                        <div class="input-glow"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <span>Send Message</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                    </button>
+                </form>
+                <div class="contact-info">
+                    <div class="info-card glass-card">
+                        <div class="info-icon">📧</div>
+                        <h4>Email</h4>
+                        <p>hello@nova-experience.com</p>
+                    </div>
+                    <div class="info-card glass-card">
+                        <div class="info-icon">🌐</div>
+                        <h4>Social</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link">Twitter</a>
+                            <a href="#" class="social-link">GitHub</a>
+                            <a href="#" class="social-link">LinkedIn</a>
+                        </div>
+                    </div>
+                    <div class="info-card glass-card">
+                        <div class="info-icon">📍</div>
+                        <h4>Location</h4>
+                        <p>The Digital Universe</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="brand-icon">◆</span>
+                    <span>NOVA</span>
+                </div>
+                <p class="footer-text">Crafted with ❤️ and cutting-edge technology</p>
+                <p class="footer-copy">&copy; 2026 NOVA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop" title="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </button>
+
+    <!-- Konami Code Overlay -->
+    <div class="konami-overlay" id="konamiOverlay">
+        <div class="konami-content">
+            <h2>🎉 KONAMI CODE ACTIVATED!</h2>
+            <p>You found the secret! Enjoy this moment.</p>
+            <div class="konami-fireworks">
+                <span>✨</span><span>🎆</span><span>🎇</span><span>✨</span><span>🎆</span>
+            </div>
+            <button class="btn btn-primary" id="konamiClose">Awesome!</button>
+        </div>
+    </div>
+
+    <!-- Feature Detail Modal -->
+    <div class="feature-modal" id="featureModal">
+        <div class="feature-modal-overlay" id="featureModalOverlay"></div>
+        <div class="feature-modal-content glass-card">
+            <button class="feature-modal-close" id="featureModalClose">&times;</button>
+            <div class="feature-modal-body" id="featureModalBody">
+                <!-- Content injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Full-Screen View -->
+    <div class="gallery-fullscreen" id="galleryFullscreen">
+        <div class="gallery-fullscreen-bg" id="galleryFullscreenBg"></div>
+        <div class="gallery-fullscreen-content">
+            <button class="gallery-fullscreen-close" id="galleryFullscreenClose">&times;</button>
+            <div class="gallery-fullscreen-info">
+                <h2 id="galleryFullscreenTitle">Title</h2>
+                <p id="galleryFullscreenDesc">Description</p>
+                <button class="btn btn-primary" id="galleryFullscreenApply">
+                    <span>Apply as Background</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <span class="toast-icon">✓</span>
+        <span class="toast-text">Message sent successfully!</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
